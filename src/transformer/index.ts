@@ -6,6 +6,7 @@ import {
   Embed,
   Equation,
   Image,
+  LinkPreview,
   NotionClient,
 } from '../notion';
 
@@ -112,6 +113,13 @@ ${codeString}
     return `\`\`\`${language}${fileName ? `:${fileName}` : ''}
 ${codeString}
 \`\`\``;
+  });
+
+  n2m.setCustomTransformer('link_preview', (block) => {
+    const { link_preview } = block as LinkPreview;
+    if (!link_preview.url) return '';
+
+    return link_preview.url;
   });
 
   // toggleのcustom transformerはバグで動作しない https://github.com/souvikinator/notion-to-md/issues/98
