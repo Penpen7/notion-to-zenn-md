@@ -83,8 +83,7 @@ $$`;
       icon = callout.icon.emoji;
     }
 
-    return `
-:::message
+    return `:::message
 ${icon} ${callout.rich_text.map((item) => item.plain_text).join('')}
 :::
 `;
