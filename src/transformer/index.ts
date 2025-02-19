@@ -8,6 +8,7 @@ import {
   Image,
   LinkPreview,
   NotionClient,
+  Video,
 } from '../notion';
 
 export function getTransformer(notion: NotionClient) {
@@ -120,6 +121,14 @@ ${codeString}
     if (!link_preview.url) return '';
 
     return link_preview.url;
+  });
+
+  n2m.setCustomTransformer('video', (block) => {
+    const { video } = block as Video;
+    if (video.external.url) return video.external.url;
+    if (video.file.url) return video.file.url;
+
+    return '';
   });
 
   // toggleのcustom transformerはバグで動作しない https://github.com/souvikinator/notion-to-md/issues/98
