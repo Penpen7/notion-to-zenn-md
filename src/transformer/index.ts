@@ -120,7 +120,9 @@ ${codeString}
     const { link_preview } = block as LinkPreview;
     if (!link_preview.url) return '';
 
-    return `\n${link_preview.url}\n`;
+    return `
+${link_preview.url}
+`;
   });
 
   n2m.setCustomTransformer('video', (block) => {
