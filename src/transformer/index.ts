@@ -120,7 +120,7 @@ ${codeString}
     const { link_preview } = block as LinkPreview;
     if (!link_preview.url) return '';
 
-    return `
+    return ` 
 ${link_preview.url}
 `;
   });
