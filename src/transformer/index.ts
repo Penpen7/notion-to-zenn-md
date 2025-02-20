@@ -22,9 +22,7 @@ export function getTransformer(notion: NotionClient) {
     const { bookmark } = block as Bookmark;
     if (!bookmark.url) return '';
 
-    return `
-@[card](${bookmark.url})
-`;
+    return `@[card](${bookmark.url})`;
   });
 
   // image
